@@ -81,7 +81,7 @@ spec:
         - name: {{ include "h2ogpt.fullname" . }}
           securityContext:
             {{- toYaml .Values.h2ogpt.securityContext | nindent 12 }}
-          image: "{{ .Values.h2ogpt.image.repository }}:{{ .Values.h2ogpt.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.h2ogpt.image.repository }}:{{ .Values.h2ogpt.image.tag }}"
           imagePullPolicy: {{ .Values.h2ogpt.image.pullPolicy }}
           command: []
           args:
@@ -191,7 +191,7 @@ spec:
         - name: {{ include "h2ogpt.fullname" . }}-tgi-inference
           securityContext:
             {{- toYaml .Values.tgi.securityContext | nindent 12 }}
-          image: "{{ .Values.tgi.image.repository }}:{{ .Values.tgi.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.tgi.image.repository }}:{{ .Values.tgi.image.tag }}"
           imagePullPolicy: {{ .Values.tgi.image.pullPolicy }}
           command: []
           args: 
@@ -294,7 +294,7 @@ spec:
         - name: {{ include "h2ogpt.fullname" . }}-vllm-inference
           securityContext:
             {{- toYaml .Values.vllm.securityContext | nindent 12 }}
-          image: "{{ .Values.vllm.image.repository }}:{{ .Values.vllm.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.vllm.image.repository }}:{{ .Values.vllm.image.tag }}"
           imagePullPolicy: {{ .Values.vllm.image.pullPolicy }}
           command: ["/h2ogpt_conda/vllm_env/bin/python3.10"]
           args: 
